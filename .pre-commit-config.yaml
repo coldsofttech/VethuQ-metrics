@@ -1,0 +1,21 @@
+default_install_hook_types: [pre-commit]
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+      - id: check-json
+      - id: check-yaml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+  - repo: local
+    hooks:
+      # This repo is public: secrets, raw data and notebooks must never be committed.
+      - id: forbidden-files
+        name: no secrets, raw data or analysis notebooks
+        language: fail
+        entry: "Do not commit secrets, raw data or notebooks. They stay private (see README, 'Never commit')."
+        files: '(^|/)(\.env(\..*)?|\.dev\.vars(\..*)?|.*\.(pem|key|p12|pfx|ipynb|parquet|sqlite3?|db|csv))$'
+        exclude: '(^|/)\.env\.example$'

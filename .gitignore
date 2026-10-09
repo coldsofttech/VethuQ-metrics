@@ -218,3 +218,27 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# --- VethuQ metrics: never commit ---
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+.wrangler/
+secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+# Raw data, exports and analysis stay private
+raw/
+data/
+exports/
+notebooks/
+*.ipynb
+*.sqlite
+*.sqlite3
+*.db
+*.parquet
+*.csv
